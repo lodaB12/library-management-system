@@ -1,0 +1,73 @@
+-- Schema Creation for Library Management System
+
+CREATE TABLE Authors (
+    author_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    bio TEXT
+);
+
+CREATE TABLE Categories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Books (
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(150) NOT NULL,
+    author_id INT,
+    category_id INT,
+    total_copies INT DEFAULT 1,
+    available_copies INT DEFAULT 1,
+    FOREIGN KEY (author_id) REFERENCES Authors(author_id),
+    FOREIGN KEY (category_id) REFERENCES Categories(category_id)
+);
+
+CREATE TABLE Members (
+    member_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(15),
+    join_date DATE DEFAULT CURRENT_DATE
+);
+
+CREATE TABLE Loans (
+    loan_id INT AUTO_INCREMENT PRIMARY KEY,
+    member_id INT,
+    book_id INT,
+    issue_date DATE DEFAULT CURRENT_DATE,
+    due_date DATE,
+    return_date DATE,
+    FOREIGN KEY (member_id) REFERENCES Members(member_id),
+    FOREIGN KEY (book_id) REFERENCES Books(book_id)
+);
+
+CREATE TABLE Admins (
+    admin_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL
+);
+
+-- Sample Data Inserts
+
+INSERT INTO Authors (name, bio) VALUES
+('J.K. Rowling', 'Author of the Harry Potter series'),
+('George Orwell', 'Known for dystopian novels like 1984 and Animal Farm');
+
+INSERT INTO Categories (name) VALUES
+('Fantasy'),
+('Science Fiction'),
+('Dystopian');
+
+INSERT INTO Books (title, author_id, category_id, total_copies, available_copies) VALUES
+('Harry Potter and the Sorcerer''s Stone', 1, 1, 5, 5),
+('1984', 2, 3, 3, 3);
+
+INSERT INTO Members (name, email, phone) VALUES
+('Alice Johnson', 'alice@example.com', '123-456-7890'),
+('Bob Smith', 'bob@example.com', '098-765-4321');
+
+INSERT INTO Loans (member_id, book_id, due_date) VALUES
+(1, 1, DATE_ADD(CURDATE(), INTERVAL 14 DAY));
+
+INSERT INTO Admins (username, password_hash) VALUES
+('admin', 'hashed_password_here');
