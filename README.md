@@ -1,41 +1,44 @@
-# library-management-system
-Library Management System MySQL project
 # Library Management System
 
-## Project Overview
-
-The Library Management System is designed to help librarians and staff efficiently manage core operations of a library. It provides a database to store and organize information about books, authors, categories, and members. The system supports issuing and returning books, tracks due dates, and enables monitoring of overdue items. It also provides administrative capabilities to generate reports such as the most borrowed books and current loans.
-
-### Core Features
-
-- Add, update, and delete records for books, authors, and categories.  
-- Register new library members and maintain their contact information.  
-- Issue books to members with an automatic due date calculation (e.g., 14 days).  
-- Record the return of books and update availability counts accordingly.  
-- Identify and list overdue loans where books have not been returned by their due date.  
-- Generate reports such as the most borrowed books and overdue items.  
-- (Optional) Implement fine calculations for late returns.
-
-### Entities and Attributes
-
-| Entity     | Description                         | Key Attributes (Fields)                               |
-|------------|-----------------------------------|-------------------------------------------------------|
-| **Books**    | Stores information about library books | `book_id` (PK), `title`, `author_id` (FK), `category_id` (FK), `total_copies`, `available_copies` |
-| **Authors**  | Information about book authors      | `author_id` (PK), `name`, `bio`                       |
-| **Categories** | Book categories or genres           | `category_id` (PK), `name`                             |
-| **Members**  | Registered library users            | `member_id` (PK), `name`, `email`, `phone`, `join_date` |
-| **Loans**    | Records of book borrowings          | `loan_id` (PK), `member_id` (FK), `book_id` (FK), `issue_date`, `due_date`, `return_date` |
-| **Admins**   | System administrators (optional)    | `admin_id` (PK), `username`, `password_hash`          |
+A MySQL-based database project for managing library operations, including books, members, loans, and more.
 
 ---
 
-## ER Diagram (Phase 2)
+## Project Overview
+
+The Library Management System is designed to help librarians and staff efficiently manage core operations of a library. It provides a database to store and organize information about books, authors, categories, and members. The system supports issuing and returning books, tracks due dates, and enables monitoring of overdue items.
+
+### Core Features
+
+- Add, update, and delete records for books, authors, and categories  
+- Register new library members and store their contact details  
+- Issue and return books, update availability automatically  
+- Track overdue loans and return statuses  
+- Generate useful reports: most borrowed books, member borrowing history, overdue items  
+- (Optional) Add fine calculation system for late returns  
+
+---
+
+## Entities and Attributes
+
+| Entity     | Description                         | Key Attributes |
+|------------|-------------------------------------|----------------|
+| **Books**    | Library book data                  | `book_id`, `title`, `author_id`, `category_id`, `total_copies`, `available_copies` |
+| **Authors**  | Info about book authors            | `author_id`, `name`, `bio` |
+| **Categories** | Book categories or genres        | `category_id`, `name` |
+| **Members**  | Registered library users           | `member_id`, `name`, `email`, `phone`, `join_date` |
+| **Loans**    | Book borrow and return tracking    | `loan_id`, `member_id`, `book_id`, `issue_date`, `due_date`, `return_date` |
+| **Admins**   | System admins (optional)           | `admin_id`, `username`, `password_hash` |
+
+---
+
+## ER Diagram
 
 ![ER Diagram](./library-management-system.png)
 
 ---
 
-## SQL Schema (Phase 3)
+## SQL Schema
 
 ```sql
 CREATE TABLE Authors (
@@ -85,31 +88,6 @@ CREATE TABLE Admins (
     password_hash VARCHAR(255) NOT NULL
 );
 
-SAMPLE DATA
-INSERT INTO Authors (name, bio) VALUES
-('J.K. Rowling', 'Author of the Harry Potter series.'),
-('George Orwell', 'Author of 1984 and Animal Farm.'),
-('Jane Austen', 'English novelist known for Pride and Prejudice.');
-
-INSERT INTO Categories (name) VALUES
-('Fantasy'),
-('Dystopian'),
-('Classic Literature');
-
-INSERT INTO Books (title, author_id, category_id, total_copies, available_copies) VALUES
-('Harry Potter and the Sorcerer\'s Stone', 1, 1, 5, 5),
-('1984', 2, 2, 3, 3),
-('Pride and Prejudice', 3, 3, 4, 4);
-
-INSERT INTO Members (name, email, phone) VALUES
-('Alice Johnson', 'alice@example.com', '1234567890'),
-('Bob Smith', 'bob@example.com', '0987654321'),
-('Carol White', 'carol@example.com', '5555555555');
-
-INSERT INTO Loans (member_id, book_id, due_date) VALUES
-(1, 1, '2025-07-01'),
-(2, 2, '2025-06-25'),
-(3, 3, '2025-06-30');
 
 EXAMPLE QUERIES
 1. List All Available Books
