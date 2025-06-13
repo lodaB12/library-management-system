@@ -31,8 +31,7 @@ The Library Management System is designed to help librarians and staff efficient
 
 ## ER Diagram (Phase 2)
 
-*Insert ER diagram here*  
-You can create your ER diagram using tools like [dbdiagram.io](https://dbdiagram.io/) or draw.io and upload it here as an image.
+![ER Diagram](./library-management-system.png)
 
 ---
 
