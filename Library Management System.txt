@@ -1,0 +1,74 @@
+<mxfile host="app.diagrams.net" modified="2025-06-13T15:00:00.000Z" agent="5.0 (Windows)" etag="W/123456" version="20.5.5" type="device">
+  <diagram id="library-system" name="Library Management System">
+    <mxGraphModel dx="1100" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Authors -->
+        <mxCell id="2" value="Authors&#xa;- author_id (PK)&#xa;- name&#xa;- bio" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="180" height="100" as="geometry"/>
+        </mxCell>
+        
+        <!-- Categories -->
+        <mxCell id="3" value="Categories&#xa;- category_id (PK)&#xa;- name" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="260" y="40" width="160" height="70" as="geometry"/>
+        </mxCell>
+        
+        <!-- Books -->
+        <mxCell id="4" value="Books&#xa;- book_id (PK)&#xa;- title&#xa;- author_id (FK)&#xa;- category_id (FK)&#xa;- total_copies&#xa;- available_copies" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="160" y="180" width="220" height="120" as="geometry"/>
+        </mxCell>
+        
+        <!-- Members -->
+        <mxCell id="5" value="Members&#xa;- member_id (PK)&#xa;- name&#xa;- email&#xa;- phone&#xa;- join_date" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="420" y="40" width="180" height="110" as="geometry"/>
+        </mxCell>
+        
+        <!-- Loans -->
+        <mxCell id="6" value="Loans&#xa;- loan_id (PK)&#xa;- member_id (FK)&#xa;- book_id (FK)&#xa;- issue_date&#xa;- due_date&#xa;- return_date" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="440" y="190" width="240" height="130" as="geometry"/>
+        </mxCell>
+        
+        <!-- Admins -->
+        <mxCell id="7" value="Admins&#xa;- admin_id (PK)&#xa;- username&#xa;- password_hash" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="680" y="100" width="180" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- Relationships -->
+        <!-- Books -> Authors -->
+        <mxCell id="8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6c8ebf;" edge="1" parent="1" source="4" target="2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="9" value="written by" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="8">
+          <mxGeometry x="0.5" y="0" relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Books -> Categories -->
+        <mxCell id="10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d79b00;" edge="1" parent="1" source="4" target="3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="11" value="categorized as" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="10">
+          <mxGeometry x="0.5" y="0" relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Loans -> Members -->
+        <mxCell id="12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#b85450;" edge="1" parent="1" source="6" target="5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="13" value="loaned to" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="12">
+          <mxGeometry x="0.5" y="0" relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Loans -> Books -->
+        <mxCell id="14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d6b656;" edge="1" parent="1" source="6" target="4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="15" value="loan for" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="14">
+          <mxGeometry x="0.5" y="0" relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
