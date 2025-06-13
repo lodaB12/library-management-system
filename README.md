@@ -34,7 +34,7 @@ The Library Management System is designed to help librarians and staff efficient
 
 ## ER Diagram
 
-![ER Diagram](./library-management-system.png)
+Library Management System Diagram.png
 
 ---
 
